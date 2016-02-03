@@ -2,7 +2,7 @@ var webpack = require("webpack");
 module.exports = {
   entry: {
     vendor: ['react', 'react-dom', 'whatwg-fetch'],
-    app: __dirname + '/js/src/',
+    app: __dirname + '/js/src/app.js',
   },
   output: {
     path: __dirname + '/js/dist/',
@@ -10,7 +10,14 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        query: {
+          presets: ['es2015','react', 'stage-0']
+        }
+      }
     ]
   },
   plugins: [
